@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Route, Link, Router } from "react-router-dom";
 import { friendsFetcher } from "../actions";
 import Loader from "react-loader-spinner";
+import AddPrisonForm from "./AddPrisonForm";
 
 class Contractors extends React.Component {
   componentDidMount() {
@@ -24,8 +25,8 @@ class Contractors extends React.Component {
         ))}
         {this.props.test && (
           <details>
-            test
-            <summary>more things</summary>
+            <summary>test</summary>
+            <Link to="/add-prison-form">Add Prison From</Link>
           </details>
         )}
       </div>

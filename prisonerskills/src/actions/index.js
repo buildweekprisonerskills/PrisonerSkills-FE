@@ -32,3 +32,21 @@ export const friendsFetcher = () => dispatch => {
       dispatch({ type: FETCHING_FRIENDS_ERROR });
     });
 };
+
+export const ADD_PRISON_START = "ADD_PRISON_START";
+export const ADD_PRISON_SUCCESS = "ADD_PRISON_SUCCESS";
+export const ADD_PRISON_ERROR = "ADD_PRISON_ERROR";
+
+export const addPrison = prison => dispatch => {
+  dispatch({ type: ADD_PRISON_START });
+  axios
+    .post("http://localhost:5000/api/friends", prison)
+    .then(res => {
+      console.log(res);
+      dispatch({ type: ADD_PRISON_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: ADD_PRISON_ERROR });
+    });
+};
