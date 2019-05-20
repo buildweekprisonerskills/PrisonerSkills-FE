@@ -14,3 +14,21 @@ export const admin = creds => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+export const FETCHING_FRIENDS_START = "FETCHING_FRIENDS_START";
+export const FETCHING_FRIENDS_SUCCESS = "FETCHING_FRIENDS_SUCCESS";
+export const FETCHING_FRIENDS_ERROR = "FETCHING_FRIENDS_ERROR";
+
+export const friendsFetcher = () => dispatch => {
+  dispatch({ type: FETCHING_FRIENDS_START });
+  axios
+    .get("http://localhost:5000/api/friends")
+    .then(res => {
+      console.log(res);
+      dispatch({ type: FETCHING_FRIENDS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: FETCHING_FRIENDS_ERROR });
+    });
+};

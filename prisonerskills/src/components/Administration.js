@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { admin } from "../actions";
-import Button from "@material-ui/core/button";
+//import Button from "@material-ui/core/button";
 
 class Administration extends React.Component {
   state = {
@@ -46,7 +46,7 @@ class Administration extends React.Component {
             value={this.state.credentials.password}
             onChange={this.handleChanges}
           />
-          <Button>Login</Button>
+          <button>Login</button>
         </form>
       </div>
     );
