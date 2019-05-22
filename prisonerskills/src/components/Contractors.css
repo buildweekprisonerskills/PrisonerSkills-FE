@@ -1,0 +1,60 @@
+.friends {
+    display:flex;
+    margin-top: 36px;
+    justify-content: space-evenly;
+}
+
+.prisons {
+    display:flex;
+    width: 100%;
+    justify-content: space-evenly;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    background-color: #F4F3F3;
+    margin-top: 30px;
+   
+}
+
+.prisoners {
+    margin-top: 20px;
+}
+
+.prisonsAndInmates {
+    border-radius: 12px;
+    border: 2px solid #979797;
+    display:flex;
+    flex-direction:column;
+    width: 600px;
+    height: 600px;
+}
+
+.prisonArea {
+    display:flex;
+    width: 95%;
+    justify-content: space-evenly;
+}
+
+.searchSquare {
+        font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	padding-top: 25px;
+	border-radius: 12px;
+	border: 2px solid #979797;
+	width: 25%;
+	display:flex;
+	flex-direction: column;
+	height: 725px;
+}
+
+.filtered {
+       font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    background-color: #F4F3F3;
+    margin-top: 25px;
+   
+}
+
+.notFiltered {
+    display:flex;
+    flex-direction: column;
+}

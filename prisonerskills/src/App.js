@@ -7,15 +7,31 @@ import Contractors from "./components/Contractors";
 import Administration from "./components/Administration";
 import AddPrisonForm from "./components/AddPrisonForm";
 import { connect } from "react-redux";
+import prisons from "./testdata.js";
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      input: ""
+    };
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
           <header className="myHeader">
-            <Link to="/administration">Administration</Link>
-            <Link to="/contractors">Contractors</Link>
+            <div className="adminLink">
+              <Link to="/administration" className="administration">
+                Administration
+              </Link>
+            </div>
+            <div className="contractLink">
+              <Link to="/contractors" className="contractors">
+                Contractors
+              </Link>
+            </div>
             {this.props.test && (
               <Link to="/add-prison-form">Add Prison Form</Link>
             )}
