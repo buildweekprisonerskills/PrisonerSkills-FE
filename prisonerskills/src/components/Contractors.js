@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Link, Router } from "react-router-dom";
-import { friendsFetcher, prisonsFetcher } from "../actions";
+import { friendsFetcher, prisonsFetcher, prisonersFetcher } from "../actions";
 import Loader from "react-loader-spinner";
 import AddPrisonForm from "./AddPrisonForm";
 import Prisoner from "./Prisoner";
@@ -9,13 +9,12 @@ import index from "../auth/";
 
 class Contractors extends React.Component {
   componentDidMount() {
-    //this.props.friendsFetcher();
     this.props.prisonsFetcher();
   }
   render() {
-    console.log(this.props.prisons);
-    console.log(this.props.test);
     console.log(this.props.notPrisons + " cors");
+    console.log(this.props.prisoners + " prisoners");
+
     return (
       <div className="friends">
         {this.props.fetching_friends && (
@@ -24,13 +23,18 @@ class Contractors extends React.Component {
             <p>Loading Data</p>
           </div>
         )}
+        {/*
         {this.props.prisons.map(prison => (
           <div key={prison.id}>
             <Link to={"/inmate-" + prison.id}>Prison {prison.name}</Link>
-            <Route path={"/inmate-" + prison.id} component={Prisoner} />
+            <Route
+              path={"/inmate-" + prison.id}
+              component={Prisoner}
+              prisonersFetcher={this.props.prisonersFetcher}
+            />
           </div>
         ))}
-
+	 */}
         {this.props.test && (
           <details>
             <summary>test</summary>
@@ -39,7 +43,8 @@ class Contractors extends React.Component {
         )}
         {this.props.notPrisons.map(notprison => (
           <div key={notprison.id}>
-            <p>{notprison.prsion_name}</p>
+            <p>{notprison.prison_name}</p>
+            <Prisoner id={notprison.id} />
           </div>
         ))}
       </div>
@@ -53,19 +58,23 @@ const mapStateToProps = ({
   test,
   oldhide,
   fetching_prisons2,
-  notPrisons
+  notPrisons,
+  prisoners,
+  fetching_prisoners
 }) => ({
   fetching_friends,
   prisons,
   test,
   oldhide,
   notPrisons,
-  fetching_prisons2
+  fetching_prisons2,
+  prisoners,
+  fetching_prisoners
 });
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { prisonsFetcher }
-  )(index(Contractors))
+    { prisonsFetcher, prisonersFetcher }
+  )(Contractors)
 );
