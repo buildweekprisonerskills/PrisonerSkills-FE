@@ -101,7 +101,7 @@ export const addPrisoner = prison => dispatch => {
   dispatch({ type: ADD_PRISONER_START });
   axiosWithAuth()
     .post(
-      `https://buildweekprisonerskills.herokuapp.com/api/prisonRoute/${1}/`,
+      `https://buildweekprisonerskills.herokuapp.com/api/prisonRoute/1/`,
       prison
     )
     .then(res => {
@@ -109,7 +109,28 @@ export const addPrisoner = prison => dispatch => {
       dispatch({ type: ADD_PRISONER_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err);
+      console.log(err + " this is the error");
       dispatch({ type: ADD_PRISONER_ERROR });
+    });
+};
+
+export const CHANGE_PRISON_START = "CHANGE_PRISON_START";
+export const CHANGE_PRISON_SUCCESS = "CHANGE_PRISON_SUCCESS";
+export const CHANGE_PRISON_ERROR = "CHANGE_PRISON_ERROR";
+
+export const changePrison = prison => dispatch => {
+  dispatch({ type: CHANGE_PRISON_START });
+  axiosWithAuth()
+    .put(
+      `https://buildweekprisonerskills.herokuapp.com/api/prisonRoute/1/`,
+      prison
+    )
+    .then(res => {
+      console.log(res);
+      dispatch({ type: CHANGE_PRISON_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: CHANGE_PRISON_ERROR });
     });
 };

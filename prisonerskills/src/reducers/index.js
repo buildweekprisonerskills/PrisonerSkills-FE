@@ -16,7 +16,10 @@ import {
   FETCHING_PRISONERS_ERROR,
   ADD_PRISONER_START,
   ADD_PRISONER_SUCCESS,
-  ADD_PRISONER_ERROR
+  ADD_PRISONER_ERROR,
+  CHANGE_PRISON_START,
+  CHANGE_PRISON_SUCCESS,
+  CHANGE_PRISON_ERROR
 } from "../actions";
 
 const intialState = {
@@ -30,7 +33,8 @@ const intialState = {
   notPrisons: [],
   fetching_prisons2: false,
   prisoners: [],
-  fetching_prisoners: false
+  fetching_prisoners: false,
+  changing_prison: false
 };
 
 const reducer = (state = intialState, action) => {
@@ -127,12 +131,30 @@ const reducer = (state = intialState, action) => {
       return {
         ...state,
         adding_prison: true,
-        prisons: action.payload
+        notPrisons: action.payload
       };
     case ADD_PRISONER_ERROR:
       return {
         ...state,
         adding_prison: false,
+        error: ""
+      };
+    case CHANGE_PRISON_START:
+      return {
+        ...state,
+        changing_prison: false,
+        error: ""
+      };
+    case CHANGE_PRISON_SUCCESS:
+      return {
+        ...state,
+        changing_prison: true,
+        notPrisons: action.payload
+      };
+    case CHANGE_PRISON_ERROR:
+      return {
+        ...state,
+        changing_prison: false,
         error: ""
       };
     default:

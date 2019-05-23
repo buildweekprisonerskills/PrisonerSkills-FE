@@ -16,7 +16,8 @@ class Contractors extends React.Component {
       input: "",
       prisons: [],
       newPrisons: [],
-      testPrison: {}
+      testPrison: {},
+      holder: 0
     };
   }
   componentDidMount() {
@@ -29,6 +30,12 @@ class Contractors extends React.Component {
 
   doublePass = thing => {
     this.props.prisonersFetcher(thing);
+  };
+
+  incrementPlus = () => {
+    this.setState({
+      holder: (this.holder += 1)
+    });
   };
 
   onUpdate = event => {
@@ -57,6 +64,7 @@ class Contractors extends React.Component {
     console.log(this.state.input);
     console.log(this.state.prisons);
     console.log(this.props.notPrisons);
+    console.log(this.state.holder);
     return (
       <div className="friends">
         {this.props.fetching_friends && (
@@ -66,6 +74,7 @@ class Contractors extends React.Component {
           </div>
         )}
 
+        {/*
         {this.props.prisons.map(prison => (
           <div key={prison.id} />
         ))}
@@ -84,15 +93,15 @@ class Contractors extends React.Component {
             <Prisoner id={notprison.id} />
           </div>
         ))}
-	 */}
+	*/}
+
         <div className="prisonsAndInmates">
           {this.state.prisons.map(prison => (
             <div className="prisons">
               <div className="prisonArea">
                 <p>{prison.name}</p>
                 <details className="prisoners">
-                  <summary>{prison.prisoners.length} - Prisoners</summary>
-
+                  <summary>Prisoners</summary>
                   {prison.prisoners.map(prisoner => (
                     <div>
                       <details>
@@ -106,17 +115,19 @@ class Contractors extends React.Component {
               </div>
             </div>
           ))}
+
           <div className="prisonsFromAuth">
             {this.props.notPrisons.map(notPrison => (
               <div className="prisons">
                 <div className="prisonArea">
                   <p>{notPrison.prison_name}</p>
                   <details className="prisoners">
-                    <summary>{this.props.prisoners.length} - Prisoners</summary>
+                    <summary>Prisoners</summary>
                     {this.props.prisoners.map(prisoner => {
                       if (prisoner.prison_id === notPrison.id) {
                         return (
                           <div>
+                            {this.incrementPlus}
                             <details>
                               <summary>{prisoner.name}</summary>
                               <p>{prisoner.skills}</p>

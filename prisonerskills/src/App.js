@@ -7,6 +7,7 @@ import Contractors from "./components/Contractors";
 import Administration from "./components/Administration";
 import AddPrisonForm from "./components/AddPrisonForm";
 import AddPrisonerForm from "./components/AddPrisonerForm";
+import ChangePrisonForm from "./components/ChangePrisonForm";
 import { connect } from "react-redux";
 import prisons from "./testdata.js";
 
@@ -47,16 +48,18 @@ class App extends React.Component {
                     <Link className="contractors1" to="/add-prison-form">
                       Add Prison Form
                     </Link>
+                    <Link to="/change-prison-form">Change Prison Form</Link>
                   </div>
                 </div>
               )}
             </div>
           </header>
-          <Route path="/contractors" component={Contractors} />
+          <Route exact path="/contractors" component={Contractors} />
           <Route path="/administration" component={Administration} />
           <Route path="/add-prisoner-form" component={AddPrisonForm} />
           <Route path="/add-prison-form" component={AddPrisonerForm} />
           <Route path="/" component={Contractors} />
+          <Route path="/change-prison-form" component={ChangePrisonForm} />
         </div>
       </Router>
     );

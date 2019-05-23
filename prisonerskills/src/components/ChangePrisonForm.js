@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Link, Router } from "react-router-dom";
-import { addPrisoner } from "../actions";
+import { changePrison } from "../actions";
 
-class AddPrisonerForm extends React.Component {
+class ChangePrisonForm extends React.Component {
   state = {
     prison_name: "",
     location: ""
@@ -11,12 +11,12 @@ class AddPrisonerForm extends React.Component {
 
   componentDidMount() {}
 
-  addPrisoner = e => {
+  changePrison = e => {
     e.preventDefault();
-    this.props.addPrisoner(this.state);
+    this.props.changePrison(this.state);
   };
 
-  handleChanges = e => {
+  handleChange = e => {
     this.setState({
       ...this.state,
       [e.target.name]: e.target.value
@@ -27,24 +27,24 @@ class AddPrisonerForm extends React.Component {
     console.log(this.state);
 
     return (
-      <div className="prisonForm">
-        <p> Add Prison Form </p>
-        <form onSubmit={this.addPrisoner}>
+      <div className="ChangePrisonForm">
+        <p>Change Prison Form</p>
+        <form onSubmit={this.changePrison}>
           <input
             type="text"
             name="prison_name"
-            placeholder="Prison Name"
+            placeholder="Name of Prison"
             value={this.state.prison_name}
-            onChange={this.handleChanges}
+            onChange={this.handleChange}
           />
           <input
             type="text"
             name="location"
             placeholder="location"
             value={this.state.location}
-            onChange={this.handleChanges}
+            onChange={this.handleChange}
           />
-          <button>Add new prison</button>
+          <button>Change Prison</button>
         </form>
       </div>
     );
@@ -52,11 +52,11 @@ class AddPrisonerForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  adding_prison: state.adding_prison,
+  changing_prison: state.changing_prison,
   notPrisons: state.notPrisons
 });
 
 export default connect(
   mapStateToProps,
-  { addPrisoner }
-)(AddPrisonerForm);
+  { changePrison }
+)(ChangePrisonForm);

@@ -31,7 +31,7 @@ class AddPrisonForm extends React.Component {
     console.log(this.props.prisons.length);
     return (
       <div className="prisonForm">
-        <p> Add Prison Form </p>
+        <p> Add Prisoner Form </p>
         <form onSubmit={this.addPrison}>
           <input
             type="text"
@@ -44,10 +44,10 @@ class AddPrisonForm extends React.Component {
             type="text"
             name="skills"
             placeholder="skills"
-            value={this.state.location}
+            value={this.state.skills}
             onChange={this.handleChanges}
           />
-          <button>Add new prison</button>
+          <button>Add new prisoner</button>
         </form>
       </div>
     );
