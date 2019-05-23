@@ -22,31 +22,35 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <header className="myHeader">
-            <div className="adminLink">
-              <Link to="/administration" className="administration">
-                Administration
-              </Link>
-            </div>
-            <div className="contractLink">
-              <Link to="/contractors" className="contractors">
-                Contractors
-              </Link>
-            </div>
-            {this.props.test && (
-              <div className="something">
-                <div className="contractLink">
-                  <Link className="contractors1" to="/add-prisoner-form">
-                    Add Prisoners Form
-                  </Link>
-                </div>
-                <div className="contractLink">
-                  <Link className="contractors1" to="/add-prison-form">
-                    Add Prison Form
-                  </Link>
-                </div>
+          <header className="myHeader2">
+            <h2>OS</h2>
+            <div>{Date.now()}</div>
+            <div className="myHeader">
+              <div className="adminLink">
+                <Link to="/administration" className="administration">
+                  Administration
+                </Link>
               </div>
-            )}
+              <div className="contractLink">
+                <Link to="/contractors" className="contractors">
+                  Contractors
+                </Link>
+              </div>
+              {this.props.test && (
+                <div className="something">
+                  <div className="contractLink">
+                    <Link className="contractors1" to="/add-prisoner-form">
+                      Add Prisoners Form
+                    </Link>
+                  </div>
+                  <div className="contractLink">
+                    <Link className="contractors1" to="/add-prison-form">
+                      Add Prison Form
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
           </header>
           <Route path="/contractors" component={Contractors} />
           <Route path="/administration" component={Administration} />

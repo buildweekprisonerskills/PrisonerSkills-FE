@@ -32,11 +32,19 @@
   }
 }
 
-.myHeader {
-    height: 80px;
+.myHeader2 {
+        height: 80px;
     width: 98%;
     margin: 0 auto;
     border-bottom: 1px solid #EBEDF8;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.myHeader {
+
     display:flex;
     justify-content: right;
     align-items: center;
