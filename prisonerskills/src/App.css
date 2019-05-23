@@ -94,3 +94,20 @@
 	text-align: center;
 	text-decoration: none;
 }
+
+.contractors1 {
+	height: 24px;
+	width: 200px;
+	color: #FFFFFF;
+	font-family: Roboto;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: 0.04px;
+	line-height: 24px;
+	text-align: center;
+	text-decoration: none;
+}
+
+.something {
+    display:flex;
+}

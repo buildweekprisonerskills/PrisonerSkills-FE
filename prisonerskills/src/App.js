@@ -34,14 +34,14 @@ class App extends React.Component {
               </Link>
             </div>
             {this.props.test && (
-              <div>
+              <div className="something">
                 <div className="contractLink">
-                  <Link className="contractors" to="/add-prisoner-form">
+                  <Link className="contractors1" to="/add-prisoner-form">
                     Add Prisoners Form
                   </Link>
                 </div>
                 <div className="contractLink">
-                  <Link className="contractors" to="/add-prison-form">
+                  <Link className="contractors1" to="/add-prison-form">
                     Add Prison Form
                   </Link>
                 </div>
@@ -52,6 +52,7 @@ class App extends React.Component {
           <Route path="/administration" component={Administration} />
           <Route path="/add-prisoner-form" component={AddPrisonForm} />
           <Route path="/add-prison-form" component={AddPrisonerForm} />
+          <Route path="/" component={Contractors} />
         </div>
       </Router>
     );
