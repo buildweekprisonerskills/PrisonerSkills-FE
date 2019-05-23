@@ -15,15 +15,21 @@ class Contractors extends React.Component {
     this.state = {
       input: "",
       prisons: [],
-      newPrisons: []
+      newPrisons: [],
+      testPrison: {}
     };
   }
   componentDidMount() {
     this.props.prisonsFetcher();
+    this.props.prisonersFetcher(1);
     this.setState({
       prisons: prisons
     });
   }
+
+  doublePass = thing => {
+    this.props.prisonersFetcher(thing);
+  };
 
   onUpdate = event => {
     this.setState({
@@ -50,10 +56,11 @@ class Contractors extends React.Component {
   };
 
   render() {
-    console.log(this.props.notPrisons + " cors");
-    console.log(this.props.prisoners + " prisoners");
-    console.log(prisons);
-    console.log(this.state);
+    // console.log(this.props.notPrisons + " cors");
+    //console.log(prisons);
+    console.log(typeof this.props.notPrisons);
+    console.log(this.props.notPrisons);
+    console.log(this.state.testPrison);
     return (
       <div className="friends">
         {this.props.fetching_friends && (
@@ -64,22 +71,16 @@ class Contractors extends React.Component {
         )}
 
         {this.props.prisons.map(prison => (
-          <div key={prison.id}>
-            <Link to={"/inmate-" + prison.id}>Prison {prison.name}</Link>
-            <Route
-              path={"/inmate-" + prison.id}
-              component={Prisoner}
-              prisonersFetcher={this.props.prisonersFetcher}
-            />
-          </div>
+          <div key={prison.id} />
         ))}
-
+        {/*
         {this.props.test && (
           <details>
             <summary>test</summary>
             <Link to="/add-prison-form">Add Prison Form</Link>
           </details>
         )}
+	 */}
         {/*
         {this.props.notPrisons.map(notprison => (
           <div key={notprison.id}>
@@ -109,6 +110,33 @@ class Contractors extends React.Component {
               </div>
             </div>
           ))}
+          <div className="prisonsFromAuth">
+            {this.props.notPrisons.map(notPrison => (
+              <div className="prisons">
+                <div className="prisonArea">
+                  <p>{notPrison.prison_name}</p>
+                  <details className="prisoners">
+                    <summary>{this.props.prisoners.length} - Prisoners</summary>
+                    {this.props.prisoners.map(prisoner => {
+                      if (prisoner.id) {
+                        return (
+                          <div>
+                            <details>
+                              <summary>{prisoner.name}</summary>
+                              <p>{prisoner.skills}</p>
+                            </details>
+                          </div>
+                        );
+                      } else {
+                        return <div />;
+                      }
+                    })}
+                  </details>
+                  <p>{notPrison.location}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
         <div className="searchSquare">
           <form onSubmit={this.handleSubmit}>
@@ -126,7 +154,7 @@ class Contractors extends React.Component {
           <div className="notFiltered">
             <p>Filtered inmates</p>
             {this.state.newPrisons.map(newPrisoner => (
-              <div className="filtered">
+              <div className="filtered" key={newPrisoner.name1}>
                 <p>{newPrisoner.name1}</p>
                 <p>{newPrisoner.skills1}</p>
               </div>

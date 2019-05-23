@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { admin } from "../actions";
+import "./Administration.css";
 //import Button from "@material-ui/core/button";
 
 class Administration extends React.Component {

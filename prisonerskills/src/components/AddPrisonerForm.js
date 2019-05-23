@@ -1,22 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Link, Router } from "react-router-dom";
-import { addPrison } from "../actions";
+import { addPrisoner } from "../actions";
 
-class AddPrisonForm extends React.Component {
+class AddPrisonerForm extends React.Component {
   state = {
-    id: 1,
-    name: "",
-    skills: "",
-    description: "test",
-    prison_id: 1
+    prison_name: "",
+    location: "",
+    username_id: 1
   };
 
   componentDidMount() {}
 
-  addPrison = e => {
+  addPrisoner = e => {
     e.preventDefault();
-    this.props.addPrison(this.state);
+    this.props.addPrisoner(this.state);
   };
 
   handleChanges = e => {
@@ -28,22 +26,22 @@ class AddPrisonForm extends React.Component {
 
   render() {
     console.log(this.state);
-    console.log(this.props.prisons.length);
+
     return (
       <div className="prisonForm">
         <p> Add Prison Form </p>
-        <form onSubmit={this.addPrison}>
+        <form onSubmit={this.addPrisoner}>
           <input
             type="text"
-            name="name"
-            placeholder="name"
-            value={this.state.name}
+            name="prison_name"
+            placeholder="Prison Name"
+            value={this.state.prison_name}
             onChange={this.handleChanges}
           />
           <input
             type="text"
-            name="skills"
-            placeholder="skills"
+            name="location"
+            placeholder="location"
             value={this.state.location}
             onChange={this.handleChanges}
           />
@@ -61,5 +59,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addPrison }
-)(AddPrisonForm);
+  { addPrisoner }
+)(AddPrisonerForm);
