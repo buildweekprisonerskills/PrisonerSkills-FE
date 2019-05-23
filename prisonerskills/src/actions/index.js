@@ -41,7 +41,7 @@ export const FETCHING_PRISONS_ERROR = "FETCHING_PRISONS_ERROR";
 export const prisonsFetcher = () => dispatch => {
   dispatch({ type: FETCHING_PRISONS_START });
   axiosWithAuth()
-    .get("https://buildweekprisonerskills.herokuapp.com/api/prisonRoute")
+    .get("https://buildweekprisonerskills.herokuapp.com/api/allPrisonsRoute/")
     .then(res => {
       //console.log(res.data + " AAA");
       dispatch({ type: FETCHING_PRISONS_SUCCESS, payload: res.data });
@@ -60,7 +60,7 @@ export const prisonersFetcher = id => dispatch => {
   dispatch({ type: FETCHING_PRISONERS_START });
   axiosWithAuth()
     .get(
-      `https://buildweekprisonerskills.herokuapp.com/api/allPrisonsRoute/prisoners/${id}`
+      `https://buildweekprisonerskills.herokuapp.com/api/allPrisonsRoute/prisoners/`
     )
     .then(res => {
       //console.log(res.data + " BBB");

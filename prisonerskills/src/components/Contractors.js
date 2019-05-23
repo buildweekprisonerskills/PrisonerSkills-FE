@@ -23,7 +23,7 @@ class Contractors extends React.Component {
     this.props.prisonsFetcher();
     this.props.prisonersFetcher(1);
     this.setState({
-      prisons: prisons
+      prisons: this.props.prisoners
     });
   }
 
@@ -44,23 +44,19 @@ class Contractors extends React.Component {
 
   searchFilter = event => {
     let emptyArray = [];
-    let newArray = this.state.prisons.map(prison => {
-      prison.prisoners.map(prisoner => {
-        if (prisoner.name1 === event) {
-          emptyArray.push(prisoner);
-        }
-      });
+    let newArray = this.props.prisoners.map(prisoner => {
+      if (prisoner.name === event) {
+        emptyArray.push(prisoner);
+      }
     });
-    console.log(emptyArray);
+    console.log(emptyArray + " helllo");
     this.setState({ newPrisons: emptyArray });
   };
 
   render() {
-    // console.log(this.props.notPrisons + " cors");
-    //console.log(prisons);
-    console.log(typeof this.props.notPrisons);
+    console.log(this.state.input);
+    console.log(this.state.prisons);
     console.log(this.props.notPrisons);
-    console.log(this.state.testPrison);
     return (
       <div className="friends">
         {this.props.fetching_friends && (
@@ -118,7 +114,7 @@ class Contractors extends React.Component {
                   <details className="prisoners">
                     <summary>{this.props.prisoners.length} - Prisoners</summary>
                     {this.props.prisoners.map(prisoner => {
-                      if (prisoner.id) {
+                      if (prisoner.prison_id === notPrison.id) {
                         return (
                           <div>
                             <details>
@@ -154,9 +150,9 @@ class Contractors extends React.Component {
           <div className="notFiltered">
             <p>Filtered inmates</p>
             {this.state.newPrisons.map(newPrisoner => (
-              <div className="filtered" key={newPrisoner.name1}>
-                <p>{newPrisoner.name1}</p>
-                <p>{newPrisoner.skills1}</p>
+              <div className="filtered" key={newPrisoner.name}>
+                <p>{newPrisoner.name}</p>
+                <p>{newPrisoner.skills}</p>
               </div>
             ))}
           </div>
