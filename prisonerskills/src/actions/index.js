@@ -41,14 +41,34 @@ export const FETCHING_PRISONS_ERROR = "FETCHING_PRISONS_ERROR";
 export const prisonsFetcher = () => dispatch => {
   dispatch({ type: FETCHING_PRISONS_START });
   axiosWithAuth()
-    .get("https://buildweekprisonerskills.herokuapp.com/api/prisonRoute/")
+    .get("https://buildweekprisonerskills.herokuapp.com/api/allPrisonsRoute")
     .then(res => {
-      console.log(res.data + " AAA");
+      //console.log(res.data + " AAA");
       dispatch({ type: FETCHING_PRISONS_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err.data + " jjjjj");
+      //console.log(err + " jjjjj");
       dispatch({ type: FETCHING_PRISONS_ERROR });
+    });
+};
+
+export const FETCHING_PRISONERS_START = "FETCHING_PRISONERS_START";
+export const FETCHING_PRISONERS_SUCCESS = "FETCHING_PRISONERS_SUCCESS";
+export const FETCHING_PRISONERS_ERROR = "FETCHING_PRISONERS_ERROR";
+
+export const prisonersFetcher = id => dispatch => {
+  dispatch({ type: FETCHING_PRISONERS_START });
+  axiosWithAuth()
+    .get(
+      `https://buildweekprisonerskills.herokuapp.com/api/allPrisonsRoute/prisoners/${id}`
+    )
+    .then(res => {
+      //console.log(res.data + " BBB");
+      dispatch({ type: FETCHING_PRISONERS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err + " yyyy");
+      dispatch({ type: FETCHING_PRISONERS_ERROR });
     });
 };
 
@@ -59,7 +79,10 @@ export const ADD_PRISON_ERROR = "ADD_PRISON_ERROR";
 export const addPrison = prison => dispatch => {
   dispatch({ type: ADD_PRISON_START });
   axiosWithAuth()
-    .post("http://localhost:5000/api/friends", prison)
+    .post(
+      "https://buildweekprisonerskills.herokuapp.com/api/prisonRoute/prisoners/4",
+      prison
+    )
     .then(res => {
       console.log(res);
       dispatch({ type: ADD_PRISON_SUCCESS, payload: res.data });

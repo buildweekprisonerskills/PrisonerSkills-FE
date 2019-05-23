@@ -5,9 +5,11 @@ import { addPrison } from "../actions";
 
 class AddPrisonForm extends React.Component {
   state = {
+    id: 7,
     name: "",
-    location: "",
-    prisoners: []
+    skills: "",
+    description: "test",
+    prison_id: 7
   };
 
   componentDidMount() {}
@@ -40,8 +42,8 @@ class AddPrisonForm extends React.Component {
           />
           <input
             type="text"
-            name="location"
-            placeholder="location"
+            name="skills"
+            placeholder="skills"
             value={this.state.location}
             onChange={this.handleChanges}
           />
