@@ -1,0 +1,4 @@
+[build]
+base = "prisonerskills/
+publish = "prisonerskills/build"
+command = "npm build"
