@@ -1,8 +1,7 @@
 .friends {
-    display:flex;
-   
+    display:flex;   
     justify-content: space-evenly;
-    height: 950px;
+    margin-bottom: 20px;
    
 }
 
@@ -28,8 +27,9 @@
     display:flex;
     flex-direction:column;
     width: 600px;
-    height: 800px;
+    height: 100%;
     background-color: #ffffff;
+    padding-bottom:10px;
 }
 
 .prisonArea {
@@ -70,7 +70,8 @@ p {
 }
 
 .backgroundWrap {
-    height: 100%;
+    width: 95%;
+    margin: 0 auto;
     background-color: #166CCB
 }
 
