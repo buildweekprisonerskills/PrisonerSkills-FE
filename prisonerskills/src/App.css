@@ -32,11 +32,19 @@
   }
 }
 
-.myHeader {
-    height: 80px;
+.myHeader2 {
+        height: 80px;
     width: 98%;
     margin: 0 auto;
     border-bottom: 1px solid #EBEDF8;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.myHeader {
+
     display:flex;
     justify-content: right;
     align-items: center;
@@ -93,4 +101,34 @@
 	line-height: 24px;
 	text-align: center;
 	text-decoration: none;
+}
+
+.contractors1 {
+	height: 24px;
+	width: 200px;
+	color: #FFFFFF;
+	font-family: Roboto;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: 0.04px;
+	line-height: 24px;
+	text-align: center;
+	text-decoration: none;
+}
+
+.something {
+    display:flex;
+}
+
+
+.myHeader2 h2 {
+	height: 51px;
+	width: 46px;
+	color: #0F69CC;
+	font-family: "Roboto";
+	font-size: 44px;
+	font-weight: bold;
+	letter-spacing: -3.19px;
+	line-height: 51px;
+	text-align: center;
 }

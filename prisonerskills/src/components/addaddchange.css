@@ -1,0 +1,22 @@
+
+
+.prisonInput {
+	height: 47px;
+	width: 250px;
+	border: 1px solid #979797;
+	margin-right: 10px;
+	text-align: center;
+	font-size: 18px;
+}
+
+.prisonButton {
+	height: 59px;
+	width: 220px;
+	border-radius: 9px;
+	background-color: #fffff;
+	font-size: 18px;
+}
+
+.prisonButton:hover {
+    background-color: #166CCB
+}

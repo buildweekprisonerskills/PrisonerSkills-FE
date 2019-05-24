@@ -1,7 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { admin } from "../actions";
+import "./Administration.css";
 //import Button from "@material-ui/core/button";
+import os2 from "../img/OS Copy 2.png";
+import oversite from "../img/oversite.png";
 
 class Administration extends React.Component {
   state = {
@@ -32,22 +35,29 @@ class Administration extends React.Component {
   render() {
     return (
       <div className="Admin">
-        <p>Admin Goes Here</p>
-        <form onSubmit={this.admin}>
-          <input
-            type="text"
-            name="username"
-            value={this.state.credentials.username}
-            onChange={this.handleChanges}
-          />
-          <input
-            type="password"
-            name="password"
-            value={this.state.credentials.password}
-            onChange={this.handleChanges}
-          />
-          <button>Login</button>
-        </form>
+        <div className="adminForm">
+          <img src={os2} alt="oversite letters" />
+          <img src={oversite} alt="oversite word" />
+
+          <p className="adminLoginText">Login to OverSite</p>
+          <form onSubmit={this.admin}>
+            <input
+              type="text"
+              name="username"
+              value={this.state.credentials.username}
+              onChange={this.handleChanges}
+              className="osForm"
+            />
+            <input
+              type="password"
+              name="password"
+              value={this.state.credentials.password}
+              onChange={this.handleChanges}
+              className="osForm"
+            />
+            <button className="osButton">Login</button>
+          </form>
+        </div>
       </div>
     );
   }

@@ -2,9 +2,6 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  FETCHING_FRIENDS_START,
-  FETCHING_FRIENDS_SUCCESS,
-  FETCHING_FRIENDS_ERROR,
   ADD_PRISON_START,
   ADD_PRISON_SUCCESS,
   ADD_PRISON_ERROR,
@@ -13,7 +10,16 @@ import {
   FETCHING_PRISONS_ERROR,
   FETCHING_PRISONERS_START,
   FETCHING_PRISONERS_SUCCESS,
-  FETCHING_PRISONERS_ERROR
+  FETCHING_PRISONERS_ERROR,
+  ADD_PRISONER_START,
+  ADD_PRISONER_SUCCESS,
+  ADD_PRISONER_ERROR,
+  CHANGE_PRISON_START,
+  CHANGE_PRISON_SUCCESS,
+  CHANGE_PRISON_ERROR,
+  DELETE_PRISON_START,
+  DELETE_PRISON_SUCCESS,
+  DELETE_PRISON_ERROR
 } from "../actions";
 
 const intialState = {
@@ -23,11 +29,13 @@ const intialState = {
   prisons: [],
   test: false,
   adding_prison: false,
-  oldhide: false,
   notPrisons: [],
   fetching_prisons2: false,
   prisoners: [],
-  fetching_prisoners: false
+  fetching_prisoners: false,
+  changing_prison: false,
+  deleting_prison: false,
+  adding_prisoner: false
 };
 
 const reducer = (state = intialState, action) => {
@@ -43,38 +51,30 @@ const reducer = (state = intialState, action) => {
         ...state,
         isLoggedIn: false,
         error: "",
-        test: true,
-        oldhide: true
+        test: true
       };
-    case FETCHING_FRIENDS_START:
+    case ADD_PRISONER_START:
       return {
         ...state,
-        fetching_friends: true,
+        adding_prisoner: true,
         error: ""
       };
-    case FETCHING_FRIENDS_SUCCESS:
+    case ADD_PRISONER_SUCCESS:
       return {
         ...state,
-        fetching_friends: false,
-        prisons: action.payload,
-        error: ""
+        adding_prisoner: false,
+        prisoners: state.prisoners.map(prisoner => {
+          if (prisoner.id === action.payload.id) {
+            return action.payload;
+          } else {
+            return prisoner;
+          }
+        })
       };
-    case ADD_PRISON_START:
+    case ADD_PRISONER_ERROR:
       return {
         ...state,
-        adding_prison: true,
-        error: ""
-      };
-    case ADD_PRISON_SUCCESS:
-      return {
-        ...state,
-        adding_prison: false,
-        notPrisons: action.payload
-      };
-    case ADD_PRISON_ERROR:
-      return {
-        ...state,
-        adding_prison: false,
+        adding_prisoner: false,
         error: action.payload
       };
     case FETCHING_PRISONS_START:
@@ -87,7 +87,8 @@ const reducer = (state = intialState, action) => {
       return {
         ...state,
         fetching_prisons2: false,
-        notPrisons: action.payload
+        notPrisons: action.payload,
+        test: true
       };
     case FETCHING_PRISONS_ERROR:
       return {
@@ -111,6 +112,72 @@ const reducer = (state = intialState, action) => {
       return {
         ...state,
         fetching_prisoners: false,
+        error: ""
+      };
+    case ADD_PRISON_START:
+      return {
+        ...state,
+        adding_prison: false,
+        error: ""
+      };
+    case ADD_PRISON_SUCCESS:
+      return {
+        ...state,
+        adding_prison: true,
+        notPrisons: state.notPrisons.map(prisons => {
+          if (prisons.id === action.payload.id) {
+            return action.payload;
+          } else {
+            return prisons;
+          }
+        })
+      };
+    case ADD_PRISON_ERROR:
+      return {
+        ...state,
+        adding_prison: false,
+        error: ""
+      };
+    case CHANGE_PRISON_START:
+      return {
+        ...state,
+        changing_prison: false,
+        error: ""
+      };
+    case CHANGE_PRISON_SUCCESS:
+      return {
+        ...state,
+        changing_prison: true,
+        notPrisons: state.notPrisons.map(prisons => {
+          if (prisons.id === action.payload.id) {
+            return action.payload;
+          } else {
+            return prisons;
+          }
+        })
+      };
+    case CHANGE_PRISON_ERROR:
+      return {
+        ...state,
+        changing_prison: false,
+        error: ""
+      };
+    case DELETE_PRISON_START:
+      return {
+        ...state,
+        deleting_prison: false,
+        error: ""
+      };
+    case DELETE_PRISON_SUCCESS:
+      return {
+        ...state,
+        deleting_prison: true,
+        notPrisons: action.payload
+      };
+    case DELETE_PRISON_ERROR:
+      return {
+        ...state,
+        deleting_prison: false,
         error: ""
       };
     default:
