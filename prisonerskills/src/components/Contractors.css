@@ -1,7 +1,9 @@
 .friends {
     display:flex;
-    margin-top: 36px;
+   
     justify-content: space-evenly;
+    height: 950px;
+   
 }
 
 .prisons {
@@ -20,12 +22,14 @@
 }
 
 .prisonsAndInmates {
+    margin-top: 36px;
     border-radius: 12px;
     border: 2px solid #979797;
     display:flex;
     flex-direction:column;
     width: 600px;
-    height: 850px;
+    height: 800px;
+    background-color: #ffffff;
 }
 
 .prisonArea {
@@ -35,6 +39,7 @@
 }
 
 .searchSquare {
+    margin-top: 36px;
         font-family: 'Roboto', sans-serif;
 	font-size: 20px;
 	padding-top: 25px;
@@ -44,6 +49,7 @@
 	display:flex;
 	flex-direction: column;
 	height: 725px;
+	background-color: #ffffff;
 }
 
 .filtered {
@@ -57,4 +63,28 @@
 .notFiltered {
     display:flex;
     flex-direction: column;
+}
+
+p {
+    font-size: 25px;
+}
+
+.backgroundWrap {
+    height: 100%;
+    background-color: #166CCB
+}
+
+
+.submit {
+    margin-left: 15px;
+	height: 25px;
+	width: 110px;
+	border-radius: 9px;
+	background-color: #ffffff;
+	font-size: 16px;
+
+}
+
+.submit:hover {
+    background-color: #166CCB
 }

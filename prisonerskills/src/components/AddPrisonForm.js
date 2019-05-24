@@ -2,21 +2,20 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Link, Router } from "react-router-dom";
 import { addPrison } from "../actions";
+import "./addaddchange.css";
 
 class AddPrisonForm extends React.Component {
   state = {
-    id: 1,
-    name: "",
-    skills: "",
-    description: "test",
-    prison_id: 1
+    prison_name: "",
+    location: "",
+    username_id: 1
   };
 
   componentDidMount() {}
 
   addPrison = e => {
     e.preventDefault();
-    this.props.addPrison(this.state);
+    this.props.addPrisoner(this.state);
   };
 
   handleChanges = e => {
@@ -28,26 +27,28 @@ class AddPrisonForm extends React.Component {
 
   render() {
     console.log(this.state);
-    console.log(this.props.prisons.length);
+
     return (
       <div className="prisonForm">
-        <p> Add Prisoner Form </p>
-        <form onSubmit={this.addPrison}>
+        <p> Add Prison Form </p>
+        <form onSubmit={this.addPrisoner}>
           <input
             type="text"
-            name="name"
-            placeholder="name"
-            value={this.state.name}
+            name="prison_name"
+            placeholder="Prison Name"
+            value={this.state.prison_name}
             onChange={this.handleChanges}
+            className="prisonInput"
           />
           <input
             type="text"
-            name="skills"
-            placeholder="skills"
-            value={this.state.skills}
+            name="location"
+            placeholder="location"
+            value={this.state.location}
             onChange={this.handleChanges}
+            className="prisonInput"
           />
-          <button>Add new prisoner</button>
+          <button className="prisonButton">Add new prison</button>
         </form>
       </div>
     );
@@ -56,7 +57,7 @@ class AddPrisonForm extends React.Component {
 
 const mapStateToProps = state => ({
   adding_prison: state.adding_prison,
-  prisons: state.prisons
+  notPrisons: state.notPrisons
 });
 
 export default connect(

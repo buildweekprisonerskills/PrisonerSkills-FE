@@ -119,3 +119,16 @@
 .something {
     display:flex;
 }
+
+
+.myHeader2 h2 {
+	height: 51px;
+	width: 46px;
+	color: #0F69CC;
+	font-family: "Roboto";
+	font-size: 44px;
+	font-weight: bold;
+	letter-spacing: -3.19px;
+	line-height: 51px;
+	text-align: center;
+}

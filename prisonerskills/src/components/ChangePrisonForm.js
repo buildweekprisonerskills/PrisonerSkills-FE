@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Link, Router } from "react-router-dom";
 import { changePrison } from "../actions";
+import "./addaddchange.css";
 
 class ChangePrisonForm extends React.Component {
   state = {
@@ -27,7 +28,7 @@ class ChangePrisonForm extends React.Component {
     console.log(this.state);
 
     return (
-      <div className="ChangePrisonForm">
+      <div className="prisonForm">
         <p>Change Prison Form</p>
         <form onSubmit={this.changePrison}>
           <input
@@ -36,6 +37,7 @@ class ChangePrisonForm extends React.Component {
             placeholder="Name of Prison"
             value={this.state.prison_name}
             onChange={this.handleChange}
+            className="prisonInput"
           />
           <input
             type="text"
@@ -43,8 +45,9 @@ class ChangePrisonForm extends React.Component {
             placeholder="location"
             value={this.state.location}
             onChange={this.handleChange}
+            className="prisonInput"
           />
-          <button>Change Prison</button>
+          <button className="prisonButton">Change Prison</button>
         </form>
       </div>
     );
