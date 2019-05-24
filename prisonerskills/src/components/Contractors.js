@@ -14,9 +14,7 @@ class Contractors extends React.Component {
     this.state = {
       input: "",
       prisons: [],
-      newPrisons: [],
-      testPrison: {},
-      holder: 0
+      newPrisons: []
     };
   }
   componentDidMount() {
@@ -26,16 +24,6 @@ class Contractors extends React.Component {
       prisons: this.props.prisoners
     });
   }
-
-  doublePass = thing => {
-    this.props.prisonersFetcher(thing);
-  };
-
-  incrementPlus = () => {
-    this.setState({
-      holder: (this.holder += 1)
-    });
-  };
 
   onUpdate = event => {
     this.setState({
@@ -60,12 +48,13 @@ class Contractors extends React.Component {
   };
 
   render() {
-    console.log(this.state.prisons);
+    console.log(this.state.prisons, "BOOOOOOOOOO");
     console.log(this.props.notPrisons);
     return (
       <div className="backgroundWrap">
         <div className="friends">
           <div className="prisonsAndInmates">
+            {/*
             {this.state.prisons.map(prison => (
               <div className="prisons" key={prison.id}>
                 <div className="prisonArea">
@@ -79,12 +68,12 @@ class Contractors extends React.Component {
                           <p>{prisoner.skills1}</p>
                         </details>
                       </div>
-                    ))}
+                      ))}
                   </details>
                   <p>{prison.location}</p>
                 </div>
               </div>
-            ))}
+              ))}*/}
 
             <div className="prisonsFromAuth">
               {this.props.notPrisons.map(notPrison => (
@@ -124,6 +113,7 @@ class Contractors extends React.Component {
                 placeholder="Type usernames here..."
                 value={this.state.input}
                 onChange={this.onUpdate}
+                className="prisonInput"
               />
               <button type="submit" className="submit">
                 Filter Posts
@@ -157,7 +147,6 @@ const mapStateToProps = ({
 }) => ({
   prisons,
   test,
-  oldhide,
   notPrisons,
   fetching_prisons2,
   prisoners,

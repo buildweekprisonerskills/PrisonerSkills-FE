@@ -15,7 +15,7 @@ class AddPrisonForm extends React.Component {
 
   addPrison = e => {
     e.preventDefault();
-    this.props.addPrisoner(this.state);
+    this.props.addPrison(this.state);
   };
 
   handleChanges = e => {
@@ -31,7 +31,7 @@ class AddPrisonForm extends React.Component {
     return (
       <div className="prisonForm">
         <p> Add Prison Form </p>
-        <form onSubmit={this.addPrisoner}>
+        <form onSubmit={this.addPrison}>
           <input
             type="text"
             name="prison_name"
